@@ -14,6 +14,7 @@ import ClassCounterone from './Components/ClassCounterone';
 import HookcounterOne from './Components/HookcounterOne';
 import Datafetching from './Components/Datafetching';
 import ComponentC from './ComponentC';
+import ReducerCounter from './Components/ReducerCounter';
  export const UseContex = React.createContext()
 
 
@@ -22,9 +23,10 @@ function App() {
 
   return (
     <div className="App">
-      <UseContex.Provider value={"Ashikpa"}>
+      <ReducerCounter></ReducerCounter>
+      {/* <UseContex.Provider value={"Ashikpa"}>
         <ComponentC></ComponentC>
-      </UseContex.Provider>
+      </UseContex.Provider> */}
     
       
     {/* //   <Datafetching></Datafetching> */}
