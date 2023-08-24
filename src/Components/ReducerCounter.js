@@ -1,27 +1,46 @@
-import React,{useReducer} from "react";
-const initialValue = 0
+import React,{useReducer} from 'react'
+const initialState = {
+    firstvalue : 0
+}
 const reducer = (state,action)=>{
-    switch(action){
+    switch (action.type){
         case 'increment':
-            return state + 1
+        return  {firstvalue: state.firstvalue + 1}
         case 'decrement':
-            return state - 1
-         case 'reset':
-            return initialValue 
-        default :
-        return state          
-    }
-}
-function ReducerCounter (){
-   const [count,dispatch] = useReducer(reducer,initialValue)
-    return(
-        <div>
-            <div>count {count}</div>
-            <button onClick={()=>dispatch('increment')}>Increment</button>
-            <button onClick={()=>dispatch('decrement')}>Decrement</button>
-            <button onClick={()=>dispatch('reset')}>Reset</button>
+        return {firstvalue : state.firstvalue - 1}
+        case 'reset':
+        return initialState
+             case 'incrementfive':
+            return  {firstvalue: state.firstvalue + 5}
+            case 'decrementfive':
+            return {firstvalue : state.firstvalue - 5}
+            case 'reset':
+                return initialState
 
-        </div>
-    )
+    }
+    
 }
+
+function ReducerCounter() {
+   const [count,dispatch] = useReducer(reducer,initialState)
+   const [countFive,dispatchFive] = useReducer(reducer,initialState)
+
+  return (
+    <div>
+        <div>count - {count.firstvalue}</div>
+        <button onClick={()=>dispatch({type:'increment'})}>Increment</button>
+        <button onClick={()=>dispatch({type:'decrement'})}>Decrement</button>
+        <button onClick={()=>dispatch({type:'reset'})}>Reset</button>
+        {/* five */}
+        <div>count- {countFive.firstvalue}</div>
+        <button onClick={()=>dispatchFive({type:'incrementfive'})}>Increment5</button>
+        <button onClick={()=>dispatchFive({type:'decrementfive'})}>Decrement5</button>
+        <button onClick={()=>dispatchFive({type:'reset'})}>Reset</button>
+
+
+
+    </div>
+  )
+}
+
 export default ReducerCounter

@@ -1,12 +1,11 @@
-import React, { createContext } from 'react'
+import React from 'react'
 import ComponentE from './ComponentE'
 
 function ComponentC() {
   return (
     <div>
-        <ComponentE>
-
-        </ComponentE>
+      ComponentC
+      <ComponentE></ComponentE>
     </div>
   )
 }
